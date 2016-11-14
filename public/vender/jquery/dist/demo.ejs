@@ -1,0 +1,78 @@
+<div class="zxx_out_box">
+    <div class="zxx_in_box">
+        <h3 class="zxx_title">
+            jQuery-单击文字或图片内容放大显示且含圆角投影效果</h3>
+        <div class="zxx_main_con fix mb20">
+            <div class="zxx_zoom_left">
+                <h4>
+                    图片的放大</h4>
+                <div class="small_pic">
+                    <a href="#pic_one">
+                        <img src="images/mm1.jpg" />
+                    </a>
+                </div>
+                <div class="small_pic">
+                    <a href="#pic_two">
+                        <img src="images/mm2.jpg" />
+                    </a>
+                </div>
+                <div class="small_pic">
+                    <a href="#pic_three">
+                        <img src="images/mm3.jpg" />
+                    </a>
+                </div>
+                <div class="small_pic">
+                    <a href="#pic_four">
+                        <img src="images/mm4.jpg" />
+                    </a>
+                </div>
+            </div>
+            <div class="zxx_zoom_right">
+                <h4>
+                    文字内容的放大</h4>
+                <p class="zxx_zoom_word">
+                    这里文字内容放大的层的宽度是需要给定值进行控制的，因为图片的高度和宽度可以获取到，而内容不确定的DIV层的高宽是获取不到了，给定高宽值，然后文字内容就会在这块区域内显示。比如说，<a
+                            href="#zoom_word_one" id="zoom_word_1">400像素的放大弹出层</a>。<br />
+                    如果你觉得这个宽度不够，你可以设置宽度值更大些，例如，<a href="#zoom_word_two" id="zoom_word_2">800像素的宽度</a>。</p>
+                <h4>
+                    视频或flash的放大</h4>
+                <p class="zxx_zoom_word">
+                    这里还可以以浮动层的形式显示flash动画或者是视频。例如，<a href="#zoom_flash_one" id="zoom_flash">简约时钟(swf)</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 要放大显示的div -->
+<div id="pic_one" style="display: none;">
+    <img src="images/z1.jpg" /></div>
+<div id="pic_two" style="display: none;">
+    <img src="images/z2.jpg" /></div>
+<div id="pic_three" style="display: none;">
+    <img src="images/z3.jpg" /></div>
+<div id="pic_four" style="display: none;">
+    <img src="images/z4.jpg" /></div>
+<div id="zoom_word_one" style="display: none;">
+    400像素宽度层示例：这里文字内容放大的层的宽度是需要给定值进行控制的，因为图片的高度和宽度可以获取到，而内容不确定的DIV层的高宽是获取不到了，给定高宽值，然后文字内容就会在这块区域内显示。</div>
+<div id="zoom_word_two" style="width: 800px; display: none;">
+    800像素宽度层示例：这里文字内容放大的层的宽度是需要给定值进行控制的，因为图片的高度和宽度可以获取到，而内容不确定的DIV层的高宽是获取不到了，给定高宽值，然后文字内容就会在这块区域内显示。</div>
+<div id="zoom_flash_one" style="display: none;">
+    <object id="FlashID" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="550"
+            height="400">
+        <param name="movie" value="flash/as3_clock_2.swf" />
+        <param name="quality" value="high" />
+        <param name="wmode" value="opaque" />
+        <param name="swfversion" value="9.0.45.0" />
+        <!--[if !IE]>-->
+        <object type="application/x-shockwave-flash" data="flash/as3_clock_2.swf" width="550"
+                height="400">
+            <!--<![endif]-->
+            <param name="quality" value="high" />
+            <param name="wmode" value="opaque" />
+            <param name="swfversion" value="9.0.45.0" />
+            <param name="expressinstall" value="Scripts/expressInstall.swf" />
+            <!--[if !IE]>-->
+        </object>
+        <!--<![endif]-->
+    </object>
+</div>

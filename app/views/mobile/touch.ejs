@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,initial-scale=auto,maximum-scale=1.0,minimum-scale=1.0" name="viewport"/>
+    <title>touch</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+</head>
+<body>
+<style>
+    .c1 {
+        width: 100%;
+        height: 300px;
+        margin: 0 auto;
+        background: #ff0099;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    @-webkit-keyframes mycolor {
+        0% {
+            /* 开始针 */
+            background-color: red;
+        }
+        40% {
+            background-color: #ffff00;
+        }
+        70% {
+            background-color: aqua;
+        }
+        100% {
+            background-color: red;
+        }
+    }
+
+    .c1:hover {
+        -webkit-animation: mycolor 3s linear;
+    }
+
+    .banner {
+        /*  min-width: 1000px;*/
+        height: 300px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .banner .bannerlist {
+        position: absolute;
+        left: 0;
+    }
+
+    .banner .bannerlist .itt {
+        float: left;
+        width: 100%;
+        height: 300px;
+    }
+
+    .banner .bannerlist .itt img {
+        position: relative;
+        width: 100%;
+        height: 300px;
+    }
+</style>
+
+<!--<div class="c1" id="bannerlist">
+    你好，你可以，上下左右，滑动，和拖动，
+</div>-->
+
+<div class="banner">
+    <div class="bannerlist" id="bannerlist">
+        <div class="itt">
+            <img src="/images/banner/banner1.jpg" alt="">
+        </div>
+        <div class="itt">
+            <img src="/images/banner/banner2.jpg" alt="">
+        </div>
+        <div class="itt active">
+            <img src="/images/banner/banner3.jpg" alt="">
+        </div>
+    </div>
+</div>
+<script>
+    window.onload = function () {
+        var imgWidth = document.body.offsetWidth;
+        var bannerlist = document.getElementById('bannerlist');
+        var itt = bannerlist.getElementsByTagName('div');
+        var aImg = bannerlist.getElementsByTagName('img');
+
+        for (var i = 0; i < aImg.length; i++) {
+            itt[i].style.width = imgWidth + 'px';
+        }
+
+        bannerlist.style.width = imgWidth * 3 + 'px';
+
+        var speed = (imgWidth - obj.offsetLeft) / 10;
+        speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+        var timer = null;
+        function startMove(obj, speed, iTarget) { // 移动对象,移动的距离
+            timer = setInterval(function () {
+                if (obj.offsetLeft == iTarget) {  //到达某一个位置停止运动
+                    clearInterval(timer);         //到达终点停止
+                }else{
+                    obj.style.left = obj.offsetLeft + speed + 'px';  //到达之前
+                }
+            }
+        }
+        function getChild(obj) {
+            var obj_child = obj.childNodes;
+            for (var i = 0; i < obj_child.length; i++) {
+                if (obj_child[i].nodeName == "#text" && !/\s/.test(obj_child.nodeValue)) {
+                    obj.removeChild(obj_child[i])
+                }
+            }
+            return obj.childNodes;
+        }
+        function getone(obj) {
+            var deeplist = getChild(obj)[0].cloneNode(true);
+            obj.removeChild(getChild(obj)[0]);
+            obj.appendChild(deeplist);
+        }
+
+        var oldX = 0;
+        var oldY = 0;
+
+        bannerlist.addEventListener('touchstart', function (event) { //当滚动开始，获取初始位置
+            if (event.targetTouches.length == 1) {
+                var touch = event.targetTouches[0];
+                oldX = touch.pageX;
+                oldY = touch.pageY;
+            }
+        }, false);
+        bannerlist.addEventListener('touchmove', function (event) { //当滚动中，改变元素大的位置
+            if (event.targetTouches.length == 1) {
+                var touch = event.targetTouches[0];
+                //bannerlist.style.left = touch.pageX + 'px';
+                //bannerlist.style.top = touch.pageY + 'px';
+
+                if (touch.pageX - oldX > 50) {
+                    alert('向右');
+                    getone(bannerlist);
+                    startMove(bannerlist, imgWidth, 'right');
+                } else if (touch.pageX - oldX < -50) {
+                    alert('向左');
+                    getone(bannerlist);
+                    startMove(bannerlist, imgWidth, 'left');
+                }
+
+                if (touch.pageY - oldY > 50) {
+                    alert('向上');
+                } else if (touch.pageY - oldY < -50) {
+                    alert('向下');
+                }
+
+            }
+        }, false);
+        bannerlist.addEventListener('touchend', function (event) {
+            if (event.targetTouches.length == 1) { //当前dom元素上的手指的一个列表
+                var touch = event.targetTouches[0];
+            }
+        }, false);
+    }
+
+
+</script>
+</body>
+</html>

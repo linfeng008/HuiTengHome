@@ -1,0 +1,61 @@
+<%- include header %>
+<%- include nav %>
+<%- include side %>
+
+<input type="hidden" id="active" value="1"/>
+
+<div class="col-md-10">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3>客户体验申请列表</h3>
+        </div>
+        <div class="panel-body">
+            <p> 时间：
+                <% var d = new Date(postData.meta.createAt) %>
+                <%= d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate()+"  "+ d.toLocaleTimeString()  %>
+            </p>
+            <p>联系人： <%= postData.name %></p>
+            <p>联系手机：<%= postData.phone %></p>
+             <p>需求： <%= postData.content %></p>
+        </div>
+    </div>
+</div>
+<%- include resource %>
+<%- include kindEditor %>
+<script>
+    //kindedit在线编辑器
+    var text_content = $("#example_content");
+    plugKingEdit(text_content, "usr_file", "/admin/upload", "/admin/upload");
+</script>
+<script>
+    $("#submit").on("click", function() {
+        var example_title = $("#example_title").val();
+        var formData = document.getElementsByName('example_logo');
+        var example_content = $("#example_content").val();
+        var oMyForm = new FormData();
+        oMyForm.append('title',example_title);
+        oMyForm.append('BrandLogo',formData[0].files[0]);
+        oMyForm.append('content',example_content);
+        var postData =oMyForm;
+        console.log(postData);
+
+        $.ajax({
+            url:'/admin/exampleAdd',
+            type:'post',
+            data:postData,
+            processData:false,
+            contentType:false,
+            success:function(data){
+                if (data.status == true) {
+                    window.location.href = "/admin/exampleList";
+                } else {
+                    alert(data.info);
+                }
+            },
+            error:function(err){
+                console.log(err);
+            }
+        });
+    });
+</script>
+<%- include footer %>

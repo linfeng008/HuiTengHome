@@ -1,0 +1,42 @@
+<% include header%>
+
+<script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.all.min.js"> </script>
+<script type="text/javascript" charset="utf-8" src="/ueditor/lang/zh-cn/zh-cn.js"> </script>
+<script id="editor" type="text/plain" style="width:1000px;height:500px;"></script>
+<script>
+    var ue = UE.getEditor('editor');
+</script>
+<div class="wrap">
+    <div class="container aboutUs">
+        <input type="file" name="images" class="images"/>
+        <input type="file" name="images" class="images"/>
+        <input class="btn btn-success" onclick="up()" value="提交"/>
+    </div>
+</div>
+<%- include resource %>
+<script>
+    function up(){
+        var formData = document.getElementsByName('images');
+        var oMyForm = new FormData(formData);
+        for(var i = 0; i<formData.length;i++){
+            oMyForm.append('images',formData[i].files[0]);
+        }
+        var postData =oMyForm;
+        $.ajax({
+            url:'/admin/upload',
+            type:'post',
+            data:postData,
+            processData:false,
+            contentType:false,
+            success:function(data){
+                console.log(data);
+            },
+            error:function(err){
+                console.log(err);
+            }
+        });
+    }
+
+</script>
+<% include footer %>

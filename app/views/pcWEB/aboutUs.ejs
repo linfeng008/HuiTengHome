@@ -1,0 +1,12 @@
+<% include ../header %>
+<div class="wrap">
+    <% include ../navBar %>
+    <% include ../banner %>
+    <div class="container aboutUs" style="padding:40px 0;">
+        <% if(postData){ %>
+        <%- postData.Content %>
+        <% } %>
+    </div>
+    <% include ../footBar %>
+</div>
+<% include ../footer %>

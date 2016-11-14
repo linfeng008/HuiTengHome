@@ -1,0 +1,59 @@
+<%- include header %>
+<%- include nav %>
+<%- include side %>
+
+<input type="hidden" id="active" value="1"/>
+<div class="col-md-10">
+    <form action="#">
+        <div class="form-group">
+            <label>标题:</label>
+            <input type="text" id="example_title" class="form-control" placeholder="请输入招聘标题"/>
+        </div>
+        <div class="form-group">
+            <label>logo:</label>
+            <input type="file" class="form-control" name="example_logo" id="example_logo">
+        </div>
+        <div class="form-group">
+            <label>内容:</label>
+            <textarea class="form-control" id="example_content" rows="20" cols="20"></textarea>
+        </div>
+        <a id="submit" class="btn btn-block btn-success">提交</a>
+    </form>
+</div>
+<%- include resource %>
+<%- include kindEditor %>
+<script>
+    //kindedit在线编辑器
+    var text_content = $("#example_content");
+    plugKingEdit(text_content, "usr_file", "/admin/upload", "/admin/upload");
+</script>
+<script>
+    $("#submit").on("click", function() {
+        var example_title = $("#example_title").val();
+        var formData = document.getElementsByName('example_logo');
+        var example_content = $("#example_content").val();
+        var oMyForm = new FormData(formData);
+        oMyForm.append('title',example_title);
+        oMyForm.append('BrandLogo',formData[0].files[0]);
+        oMyForm.append('content',example_content);
+        var postData =oMyForm;
+        $.ajax({
+            url:'/admin/exampleAdd',
+            type:'post',
+            data:postData,
+            processData:false,
+            contentType:false,
+            success:function(data){
+                if (data.status == true) {
+                    window.location.href = "/admin/exampleList";
+                } else {
+                    alert(data.info);
+                }
+            },
+            error:function(err){
+                console.log(err);
+            }
+        });
+    });
+</script>
+<%- include footer %>

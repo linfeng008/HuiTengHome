@@ -1,0 +1,337 @@
+html,
+body {
+  font-family: "微软雅黑";
+}
+.noRadius {
+  border-radius: 0;
+}
+.hide {
+  display: none;
+}
+.score_top {
+  display: none;
+  padding: 10px;
+  color: #ffffff;
+  font-size: 30px;
+  background: #777;
+  opacity: 0.5;
+  position: fixed;
+  right: 5%;
+  bottom: 20px;
+  z-index: 999999;
+}
+div.wrap {
+  width: 100%;
+  height: auto;
+}
+div.wrap header.headers {
+  height: 90px;
+  line-height: 90px;
+  background: #273341;
+  padding: 0;
+  margin: 0;
+}
+div.wrap header.headers div.container {
+  height: 90px;
+  line-height: 90px;
+}
+div.wrap header.headers div.container nav.navbar-collapse ul.nav li {
+  width: 116px;
+  text-align: center;
+}
+div.wrap header.headers div.container nav.navbar-collapse ul.nav li a {
+  display: block;
+  color: #ffffff;
+  padding: 0 30px;
+  height: 90px !important;
+  line-height: 90px;
+}
+div.wrap header.headers div.container nav.navbar-collapse ul.nav li a:hover {
+  background: #545c67;
+}
+div.wrap div.banner {
+  display: block;
+  width: 100%;
+  height: 585px;
+  overflow: hidden;
+}
+div.wrap div.banner img {
+  display: block;
+  width: 100%;
+  height: 585px;
+}
+div.wrap div.index div.product {
+  padding: 10px;
+}
+div.wrap div.index div.product div.row {
+  padding: 55px 55px;
+}
+div.wrap div.index div.product div.row div.col-xs-4 a {
+  color: #333333;
+}
+div.wrap div.index div.product div.row div.col-xs-4 a div.media div.media-left div.imgbox1 {
+  width: 129px;
+  height: 129px;
+  background: url('../images/index/customer.png') no-repeat;
+}
+div.wrap div.index div.product div.row div.col-xs-4 a div.media div.media-left div.imgbox1:hover {
+  width: 129px;
+  height: 129px;
+  background: url('../images/index/customer_bak.png') no-repeat;
+}
+div.wrap div.index div.product div.row div.col-xs-4 a div.media div.media-body {
+  font-size: 14px;
+  vertical-align: middle;
+}
+div.wrap div.index div.product div.row div.col-xs-4 a:hover {
+  text-decoration: none;
+}
+div.wrap div.index div.example {
+  background: #8ec63f;
+}
+div.wrap div.index div.example div.container h1 {
+  text-align: center;
+  padding: 25px;
+  color: #ffffff;
+  letter-spacing: 20px;
+}
+div.wrap div.index div.example div.container div.box {
+  padding: 10px;
+}
+div.wrap div.index div.example div.container div.box div.row div.col-xs-3 {
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  height: 100px;
+  margin: 10px 0;
+}
+div.wrap div.index div.example div.container div.box div.row div.col-xs-3 a {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+div.wrap div.index div.example div.container div.box div.row div.col-xs-3 a img {
+  width: 100%;
+  height: 100%;
+}
+div.wrap div.product div.section {
+  width: 100%;
+  height: 600px;
+  padding: 50px 0;
+}
+div.wrap div.product div.section div.container div.row div.col-xs-6 {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 500px;
+  overflow: hidden;
+  color: #ffffff;
+}
+div.wrap div.product div.section div.container div.row div.col-xs-6 div.left {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+div.wrap div.product div.section div.container div.row div.col-xs-6 div.left img {
+  display: block;
+  width: 500px;
+  height: 500px !important;
+  opacity: 0;
+  position: absolute;
+  top: 0px;
+  z-index: 800;
+  left: -500px;
+}
+div.wrap div.product div.section div.container div.row div.col-xs-6 div.left h1 {
+  display: block;
+  width: 550px;
+  padding: 80px 0 30px 0;
+  text-align: right;
+  font-size: 45px;
+  font-weight: bolder;
+  line-height: 56px;
+  letter-spacing: 6px;
+  position: absolute;
+  top: 10px;
+  left: -500px;
+  z-index: 99999;
+  opacity: 0;
+}
+div.wrap div.product div.section div.container div.row div.col-xs-6 div.left h2 {
+  display: block;
+  width: 550px;
+  text-align: right;
+  font-size: 28px;
+  line-height: 56px;
+  position: absolute;
+  left: -500px;
+  z-index: 800;
+  opacity: 0;
+}
+div.wrap div.product div.section div.container div.row div.col-xs-6 div.left h2.one {
+  top: 150px;
+}
+div.wrap div.product div.section div.container div.row div.col-xs-6 div.left h2.two {
+  top: 200px;
+}
+div.wrap div.product div.section div.container div.row div.col-xs-6 div.left h2.three {
+  top: 250px;
+}
+div.wrap div.product div.section div.container div.row div.col-xs-6 div.left h2.four {
+  top: 300px;
+}
+div.wrap div.product div.section div.container div.row div.col-xs-6 div.left h3 {
+  display: block;
+  width: 550px;
+  font-size: 22px;
+  line-height: 36px;
+  opacity: 1;
+  position: absolute;
+  z-index: 800;
+  left: 0px;
+}
+div.wrap div.product div.section div.container div.row div.col-xs-6 div.right {
+  position: relative;
+  top: 0;
+  right: 0;
+}
+div.wrap div.product div.section div.container div.row div.col-xs-6 div.right img {
+  display: block;
+  width: 500px;
+  height: 500px !important;
+  opacity: 0;
+  position: absolute;
+  top: 0px;
+  z-index: 800;
+  right: -1000px;
+}
+div.wrap div.product div.section div.container div.row div.col-xs-6 div.right h1 {
+  display: block;
+  width: 550px;
+  padding: 80px 0 30px 0;
+  text-align: left;
+  font-size: 45px;
+  font-weight: bolder;
+  line-height: 56px;
+  letter-spacing: 6px;
+  position: absolute;
+  top: 10px;
+  right: -500px;
+  z-index: 99999;
+  opacity: 0;
+}
+div.wrap div.product div.section div.container div.row div.col-xs-6 div.right h2 {
+  display: block;
+  width: 550px;
+  text-align: left;
+  font-size: 28px;
+  line-height: 56px;
+  position: absolute;
+  right: -500px;
+  z-index: 800;
+  opacity: 0;
+}
+div.wrap div.product div.section div.container div.row div.col-xs-6 div.right h2.one {
+  top: 150px;
+}
+div.wrap div.product div.section div.container div.row div.col-xs-6 div.right h2.two {
+  top: 200px;
+}
+div.wrap div.product div.section div.container div.row div.col-xs-6 div.right h2.three {
+  top: 250px;
+}
+div.wrap div.product div.section div.container div.row div.col-xs-6 div.right h2.four {
+  top: 300px;
+}
+div.wrap div.product div.section div.container div.row div.col-xs-6 div.right h3 {
+  display: block;
+  width: 550px;
+  font-size: 22px;
+  line-height: 36px;
+  text-align: left;
+  opacity: 1;
+  position: absolute;
+  z-index: 800;
+  right: -1000px;
+}
+div.wrap div.product div.section div.container div.row div.col-xs-6 div.right h3.one {
+  top: 160px;
+}
+div.wrap div.product div.section div.container div.row div.col-xs-6 div.right h3.two {
+  top: 200px;
+}
+div.wrap div.product div.section div.container div.row div.col-xs-6 div.right h3.three {
+  top: 250px;
+}
+div.wrap div.product div.section div.container div.row div.col-xs-6 div.right h3.four {
+  top: 300px;
+}
+div.wrap div.product div.wechatLocation {
+  background: #22b1af;
+}
+div.wrap div.product div.wechatLocation div.container div.row div.col-xs-6 img {
+  display: block;
+}
+div.wrap div.product div.wechatapprovals {
+  background: #e6564b;
+}
+div.wrap div.product div.wechatCustomer {
+  background: #69c441 url('../images/product/customerBg.png') no-repeat center bottom;
+}
+div.wrap div.product div.wechatRemind {
+  background: #008bd8;
+}
+div.wrap div.product div.wechatRemind div.container div.row div.col-xs-6 img {
+  display: block;
+}
+div.wrap div.product div.wechatLog {
+  background: #4e6ae8;
+}
+div.wrap div.product div.wechaSave {
+  background: #64ce38;
+}
+div.wrap div.joinus {
+  padding: 100px 0;
+}
+div.wrap div.joinus div.row div.col-xs-3 nav ul.nav li h4 {
+  text-align: left;
+  line-height: 30px;
+}
+div.wrap div.joinus div.row div.col-xs-3 nav ul.nav li h4:hover {
+  color: #69c441;
+}
+div.wrap div.joinus div.row div.col-xs-3 nav ul.nav li h4.active {
+  color: #008bd8;
+}
+div.wrap div.footer {
+  background: #212326;
+  color: #ffffff;
+}
+div.wrap div.footer div.contact {
+  padding: 63px 0;
+}
+div.wrap div.footer div.contact div.col-xs-7 div.row div.col-xs-3 dl dt {
+  padding-bottom: 40px;
+}
+div.wrap div.footer div.contact div.col-xs-7 div.row div.col-xs-3 dl dt a {
+  color: #ffffff;
+}
+div.wrap div.footer div.contact div.col-xs-7 div.row div.col-xs-3 dl dd {
+  padding: 5px;
+}
+div.wrap div.footer div.contact div.col-xs-7 div.row div.col-xs-3 dl dd a {
+  color: #ffffff;
+}
+div.wrap div.footer div.footbar {
+  text-align: center;
+  background: #273341;
+  padding: 20px;
+}
+div.wrap div.footer div.footbar h5 a {
+  color: #ffffff;
+}
+div.wrap div.footer div.footbar p {
+  color: #ffffff;
+}

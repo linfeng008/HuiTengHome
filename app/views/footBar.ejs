@@ -1,0 +1,156 @@
+<div class="footer">
+	<div class="container">
+		<div class="row contact">
+			<div class="col-xs-3">
+				<div class="row">
+					<p class="text-right">体验账号或联系我们,请填写表单后提交</p>
+					<div class="form-horizontal">
+						<div class="form-group">
+							<label  class="col-xs-4 control-label">姓名</label>
+							<div class="col-xs-8">
+								<input type="text" class="form-control noRadius" id="experience_name" placeholder=""></div>
+						</div>
+						<div class="form-group">
+							<label  class="col-xs-4 control-label">手机</label>
+							<div class="col-xs-8">
+								<input type="number" class="form-control noRadius" id="experience_phone" placeholder=""></div>
+						</div>
+						<div class="form-group">
+							<label  class="col-xs-4 control-label">需求</label>
+							<div class="col-xs-8">
+								<textarea class="form-control noRadius" name="#" id="experience_content" rows="2"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-xs-offset-4 col-xs-8">
+								<button id="submit" class="btn btn-success noRadius">提交</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-7 col-xs-offset-2">
+				<div class="row">
+					<div class="col-xs-3">
+						<dl>
+							<dt>
+								<a href="#">帮助中心</a>
+							</dt>
+							<dd>
+								<a href="#">新手指南</a>
+							</dd>
+							<dd>
+								<a href="#">主要功能</a>
+							</dd>
+							<dd>
+								<a href="#">常见问题</a>
+							</dd>
+						</dl>
+					</div>
+					<div class="col-xs-3">
+						<dl>
+							<dt>
+								<a href="#">关于我们</a>
+							</dt>
+							<dd>
+								<a href="#">公司简介</a>
+							</dd>
+							<dd>
+								<a href="#">产品简介</a>
+							</dd>
+						</dl>
+
+					</div>
+					<div class="col-xs-3">
+						<dl>
+							<dt>
+								<a href="#">加入我们</a>
+							</dt>
+							<dd>
+								<a href="#">代理合作</a>
+							</dd>
+							<dd>
+								<a href="#">职位招聘</a>
+							</dd>
+						</dl>
+					</div>
+					<div class="col-xs-3">
+						<dl>
+							<dt>
+								<a href="#">联系我们</a>
+							</dt>
+							<dd>
+								<a href="#">0371-68097777</a>
+							</dd>
+							<dd>
+								<a href="#">0371-88888139</a>
+							</dd>
+						</dl>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footbar">
+		<h5>
+			<a href="#">郑州辉腾软件科技有限公司</a>
+			&nbsp;&nbsp;
+			<a href="#">中国郑州紫荆山路60号金城国贸0617室</a>
+		</h5>
+		<p>
+			Copyright 2012-2013 HuiTeng Technology Co.Ltd 
+					&nbsp;&nbsp;&nbsp;&nbsp; 豫ICP备12021815号-2
+		</p>
+	</div>
+</div>
+
+<%- include resource %>
+<script>
+    $("#submit").on("click", function() {
+        var experience_name = $("#experience_name").val();
+        var experience_phone = $('#experience_phone').val();
+        var experience_content = $("#experience_content").val();
+        if(experience_phone ==""){
+            alert('请填写您的联系方式方便我们与您联系')
+        }else{
+            var PostDate = {
+                "name": experience_name,
+                "phone": experience_phone,
+                "content": experience_content
+            };
+			var xhr = new (XMLHttpRequest || ActiveXObject)("Micrsoft.XMLHTTP");
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState == 4){
+					var data = JSON.parse(xhr.responseText);
+					if (data.status == true) {
+						alert(data.info);
+						window.location.reload();
+					} else {
+						alert(data.info);
+					}
+				}
+			}
+			xhr.open('POST','/admin/experience',true);
+			xhr.send(PostDate);
+
+           /* $.ajax({
+                type: "post",
+                url: "",
+                data: PostDate,
+                dataType: "json",
+                success: function(data) {
+                    if (data.status == true) {
+                        alert(data.info);
+                        window.location.reload();
+                    } else {
+                        alert(data.info);
+                    }
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            });*/
+        }
+    });
+</script>

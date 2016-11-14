@@ -1,0 +1,22 @@
+<nav class="navbar navbar-inverse navbar-static-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/admin/home" class="navbar-brand" style="padding:0;">
+                <img src="/images/logo.png" alt="" style="width: 100%; height: 100%;">
+            </a>
+        </div>
+        <% if(!admin==''){ %>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/admin/logout">退出</a></li>
+            </ul>
+        <% } %>
+    </div>
+    <!-- /.container-fluid -->
+</nav>

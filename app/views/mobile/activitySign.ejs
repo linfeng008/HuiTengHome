@@ -1,0 +1,156 @@
+<% include header %>
+<link rel="stylesheet" href="/css/activety.css"/>
+<div class="sign">
+    <div class="container">
+        <div class="banners">
+            <img src="/images/mobile/activity/bannerText.png"/>
+        </div>
+        <div class="signFrom">
+            <div class="form-group">
+                <input type="text" id="name" class="form-control" placeholder="姓名" value=""/>
+            </div>
+            <div class="form-group">
+                <input type="text" id="tel" class="form-control" placeholder="电话" value=""/>
+            </div>
+            <div class="form-group">
+                <a class="btn btn-yellow btn-block" onclick="sub()">立即报名</a>
+            </div>
+        </div>
+        <div class="contact">
+            <div class="well well-sm noBorder noBg text-white noMargin">
+                <p class="">年轻人的天空，移动互联网的舞台。</p>
+                <p class="">欢迎来到易倍增科技应聘、面试，预约面试时间，填写面试资料，按约定时间到易倍增科技，赠送价值128元进口葡萄酒一支。</p>
+                <p class="noMargin">点击查看：<a class="text-yellow" href="http://www.zzebz.net/mobile/product">产品图文</a> &nbsp;&nbsp;&nbsp;&nbsp; <a class="text-yellow" href="http://m.v.qq.com/page/i/u/m/i0152dv23um.html?from=singlemessage&isappinstalled=0">视频介绍</a></p>
+                <p class="noMargin">时间： <span id="Startime" class="text-yellow"></span> 准时开始</p>
+                <p class="noMargin">电话： <a class="text-yellow" href="tel:0371-68097777">0371-68097777</a>  &nbsp;&nbsp; <a class="text-yellow" href="tel:15837100158">李女士15837100158</a></p>
+                <p class="noMargin">地址：郑州紫荆山路商城路金城国贸六楼0617、0603</p>
+            </div>
+        </div>
+        <div class="ruleTitle">
+            <img src="/images/mobile/activity/bar2.png" alt="" class="img2" />
+        </div>
+        <div class="rule">
+            <div class="well well-sm bgRed noBorder text-white noMargin">
+                <p>1、每周只接受30人预约，每人仅一次机会</p>
+                <p>2、需要将活动内容分享到朋友圈，现场凭手机号和朋友圈分享记录领取</p>
+                <p>在法律允许范围内本活动最终解释权归易倍增所有</p>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include resource %>
+<script>
+    var myDate = new Date();
+    var week = myDate.getDay();
+    var datec = 7 - week + 1;
+    var nextmonday = addDate(myDate, datec);
+    var year = myDate.getFullYear(); //获取完整的年份(4位,1970-????)
+    var month = nextmonday.getMonth() + 1; //获取当前月份(0-11,0代表1月)
+    var day = nextmonday.getDate(); //获取当前日(1-31)
+    var week = nextmonday.getDay();
+    nextweek = year + "年" + month + "月" + day + "日 10:00";
+    //-------------输出日期部分------------------
+    //-------------输出日期部分------------------
+    function addDate(dt, num) {
+        var ope = "+";
+        if (num < 0) {
+            ope = "-";
+        }
+        var reDT = dt;
+        for (var i = 0; i < Math.abs(num); i++) {
+            reDT = addOneDay(reDT, ope);
+        }
+        return reDT;
+    }
+    //增加或减少一天，由ope决定, + 为加，- 为减，否则不动
+    function addOneDay(dt, ope) {
+        var num = 0;
+        if (ope == "-") {
+            num = -1;
+        } else if (ope == "+") {
+            num = 1;
+        }
+        var y = dt.getYear();
+        var m = dt.getMonth();
+        var lastDay = getLastDay(y, m);
+        var d = dt.getDate();
+        d += num;
+        if (d < 1) {
+            m--;
+            if (m < 0) {
+                y--;
+                m = 11;
+            }
+            d = getLastDay(y, m);
+        } else if (d > lastDay) {
+            m++;
+            if (m > 11) {
+                y++;
+                m = 0;
+            }
+            d = 1;
+        }
+        var reDT = new Date();
+        reDT.setYear(y);
+        reDT.setMonth(m);
+        reDT.setDate(d);
+        return reDT;
+    }
+    //是否为闰年
+    function isLeapYear(y) {
+        var isLeap = false;
+        if (y % 4 == 0 && y % 100 != 0 || y % 400 == 0) {
+            isLeap = true;
+        }
+        return isLeap;
+    }
+    //每月最后一天
+    function getLastDay(y, m) {
+        var lastDay = 28;
+        m++;
+        if (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) {
+            lastDay = 31;
+        } else if (m == 4 || m == 6 || m == 9 || m == 11) {
+            lastDay = 30;
+        } else if (isLeapYear(y) == true) {
+            lastDay = 29;
+        }
+        return lastDay;
+    }
+    $('#Startime').html(nextweek);
+    function sub(){
+        var name=$('#name').val();
+        var tel = $('#tel').val();
+        var Startime = $('#Startime').text();
+        if(name !=''||tel!=''){
+            var reg=/^1\d{10}$/;
+            var rs = reg.test(tel);
+            if(rs) {
+                var postData = {
+                    'name': name,
+                    'tel': tel,
+                    'Startime': Startime
+                };
+                $.ajax({
+                    type: 'post',
+                    url: '/mobile/activityPost',
+                    data: postData,
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log(data);
+                        if (data.status) {
+                            window.location = "/mobile/activitySuccess";
+                        } else {
+                            alert(data.info);
+                        }
+                    }
+                });
+            }else{
+                alert('电话号码不正确！请重新输入');
+            }
+        }else{
+            alert('电话或姓名没有填写');
+        }
+    }
+</script>
+<% include footer %>

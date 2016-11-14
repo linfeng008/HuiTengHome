@@ -1,0 +1,50 @@
+<%- include header %>
+<%- include nav %>
+<%- include side %>
+
+<input type="hidden" id="active" value="1"/>
+<div class="col-md-10">
+    <div class="form-group">
+        <label>职位:</label>
+        <input type="text" id="joinUs_title" class="form-control" placeholder="请输入招聘标题"/>
+    </div>
+    <div class="form-group">
+        <label>职位要求:</label>
+        <textarea class="form-control" id="joinUs_content" rows="20" cols="20"></textarea>
+    </div>
+    <a id="submit" class="btn btn-block btn-success">提交</a>
+</div>
+<%- include resource %>
+<%- include kindEditor %>
+<script>
+    //kindedit在线编辑器
+    var text_content = $("#joinUs_content");
+    plugKingEdit(text_content, "usr_file", "/admin/upload", "/admin/upload");
+</script>
+<script>
+    $("#submit").on("click", function () {
+        var joinUs_title = $("#joinUs_title").val(),
+            joinUs_content = $("#joinUs_content").val();
+        var PostDate = {
+            "title": joinUs_title,
+            "content": joinUs_content
+        };
+        $.ajax({
+            type: "post",
+            url: "/admin/joinUsAdd",
+            data: PostDate,
+            dataType: "json",
+            success: function (data) {
+                if (data.status == true) {
+                    window.location.href = "/admin/joinUsList";
+                } else {
+                    alert(data.info);
+                }
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+    });
+</script>
+<%- include footer %>

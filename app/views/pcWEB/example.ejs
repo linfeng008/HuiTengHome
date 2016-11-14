@@ -1,0 +1,56 @@
+<% include ../header %>
+<div class="wrap">
+    <% include ../navBar %>
+    <% include ../banner %>
+    <div class="container joinus">
+        <div class="row">
+            <div class="col-xs-3 text-center">
+                <nav class="">
+                    <ul class="nav bs-docs-sidenav sideNav">
+                        <% postData.forEach(function(item, i){ %>
+                        <li class="">
+                            <h4 class="jobtitle" id="<%= item._id %>"><%= item.title %></h4>
+                        </li>
+                        <% } ) %>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-xs-9" id="contentbox">
+                <% postData.forEach(function(item, i){ %>
+                <div class="content content-word" style="display:none;">
+                    <%- item.content %>
+                    <img src="<%= item.BrandLogo %>" alt=""/>
+                </div>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+    <% include ../footBar %>
+</div>
+<% include ../resource %>
+<script>
+    console.log($('.sideNav ul').offset);
+</script>
+<script>
+    var str = window.location.hash;
+    var str2 = str.replace('#','');
+    var obj=$('.jobtitle');
+    obj.each(function(i,item){
+        if(obj.eq(i).attr('id')){
+            if(obj.eq(i).attr('id') == str2 ){
+                obj.eq(i).addClass('active');
+                $("#contentbox div").eq(i).addClass("show");
+            }
+        }else{
+            obj.eq(0).addClass('active');
+            $("#contentbox div").eq(0).addClass("show");
+        }
+        $(this).click(function(){
+            $('.jobtitle.active').removeClass('active');
+            $(this).addClass('active');
+            $("#contentbox div.show").removeClass("show");
+            $("#contentbox div").eq(i).addClass("show")
+        });
+    });
+</script>
+<% include ../footer %>

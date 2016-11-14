@@ -1,0 +1,48 @@
+<%- include header %>
+<%- include nav %>
+<%- include side %>
+
+<input type="hidden" id="active" value="1"/>
+<div class="col-md-10">
+    <h1>请填写对公司的描述：</h1>
+    <div class="form-group">
+        <% if(postData){ %>
+        <textarea class="form-control" id="about_content" rows="20" cols="20"><%= postData.Content %></textarea>
+        <% }else{ %>
+        <textarea class="form-control" id="about_content" rows="20" cols="20"></textarea>
+        <% } %>
+    </div>
+    <a id="submit" class="btn btn-block btn-success">提交</a>
+</div>
+<%- include resource %>
+<%- include kindEditor %>
+<script>
+    //kindedit在线编辑器
+    var text_content = $("#about_content");
+    plugKingEdit(text_content, "usr_file", "/admin/upload", "/admin/upload");
+</script>
+<script>
+    $("#submit").on("click", function () {
+        var about_content = $("#about_content").val();
+        var PostDate = {
+            "Content": about_content
+        };
+        $.ajax({
+            type: "post",
+            url: "/admin/aboutUs",
+            data: PostDate,
+            dataType: "json",
+            success: function (data) {
+                if (data.status == true) {
+                    window.location.href = "/admin/home";
+                } else {
+                    alert(data.info);
+                }
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+    });
+</script>
+<%- include footer %>

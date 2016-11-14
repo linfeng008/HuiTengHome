@@ -1,0 +1,34 @@
+<% include header%>
+<div class="wrap">
+    <div class="container aboutUs">
+        <input type="file" name="images" class="images"/>
+        <input type="file" name="images" class="images"/>
+        <input class="btn btn-success" onclick="up()" value="提交"/>
+    </div>
+</div>
+<%- include resource %>
+<script>
+    function up(){
+        var formData = document.getElementsByName('images');
+        var oMyForm = new FormData(formData);
+        for(var i = 0; i<formData.length;i++){
+            oMyForm.append('imgFile',formData[i].files[0]);
+        }
+        var postData =oMyForm;
+        $.ajax({
+            url:'/admin/upload',
+            type:'post',
+            data:postData,
+            processData:false,
+            contentType:false,
+            success:function(data){
+                console.log(data);
+            },
+            error:function(err){
+                console.log(err);
+            }
+        });
+    }
+
+</script>
+<% include footer %>

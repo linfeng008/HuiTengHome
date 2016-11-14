@@ -1,0 +1,52 @@
+<%- include header %>
+<%- include nav %>
+<%- include side %>
+<input type="hidden" id="active" value="1"/>
+<div class="col-md-10">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3>客户体验申请 </h3>
+        </div>
+        <div class="panel-body">
+            <ul class="list-group">
+                <% postData.forEach(function(item, i){ %>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <%= item.name %>
+                        </div>
+                        <div class="col-xs-4">
+                            <% var d = new Date(item.meta.createAt) %>
+                            <%= d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate()+"  "+ d.toLocaleTimeString()  %>
+                        </div>
+                        <div class="col-xs-4">
+                            <a href="experienceDetail/<%= item._id %>" class="btn btn-success"><span class="glyphicon glyphicon-eye-open"></span></a>
+                            <button class="btn btn-danger" onclick="del('<%= item.id %>')" value = "<%= item.id %>"><span class="glyphicon glyphicon-trash del"></span></button>
+                        </div>
+                    </div>
+                </li>
+                <% } ) %>
+            </ul>
+        </div>
+    </div>
+</div>
+<%- include resource %>
+<script>
+    function del(id) {
+        if (confirm("真的要删除这项吗？")) {
+            var PostDate = {"id":id};
+            $.ajax({
+                type: "post",
+                url: "/admin/experienceDel",
+                data: PostDate,
+                dataType: "json",
+                success: function (data) {
+                    window.location.reload();
+                }, error: function (data) {
+                    alert(data);
+                }
+            })
+        }
+    }
+</script>
+<%- include footer %>

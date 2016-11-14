@@ -1,0 +1,89 @@
+    /*当前位置下移100%到消失*/
+    @-webkit-keyframes moveToBottom {
+        from {
+        }
+        to {
+            -webkit-transform: translateY(100%);
+        }
+    }
+    /*当前位置上移100%到消失*/
+    @-webkit-keyframes moveToTop {
+        from {
+        }
+        to {
+            -webkit-transform: translateY(-100%);
+        }
+    }
+    /*当前位置下移100%*/
+    @-webkit-keyframes moveFromTop {
+        from {
+            -webkit-transform: translateY(-100%);
+        }
+    }
+    /*当前位置上移100%*/
+    @-webkit-keyframes moveFromBottom {
+        from {
+            -webkit-transform: translateY(100%);
+        }
+    }
+    .moveToBottom {
+        -webkit-animation: moveToBottom .6s ease both;
+        animation: moveToBottom .6s ease both;
+    }
+    .moveToTop {
+        -webkit-animation: moveToTop .6s ease both;
+        animation: moveToTop .6s ease both;
+    }    
+    .moveFromTop {
+        -webkit-animation: moveFromTop .6s ease both;
+        animation: moveFromTop .6s ease both;
+    }
+    .moveFromBottom {
+        -webkit-animation: moveFromBottom 0.6s ease both;
+        animation: moveFromBottom 0.6s ease both;
+    }
+    
+    /*当前位置右移100%*/
+    @-webkit-keyframes moveFromLeft {
+        from {
+            -webkit-transform: translateX(-100%);
+        }
+    }
+    /*当前位置左移100%*/
+    @-webkit-keyframes moveFromRight {
+        from {
+            -webkit-transform: translateX(100%);
+        }
+    }
+    .moveFromLeft {
+        -webkit-animation: moveFromLeft .6s ease both;
+        animation: moveFromLeft .6s ease both;
+    }
+    .moveFromRight {
+        -webkit-animation: moveFromRight 0.6s ease both;
+        animation: moveFromRight 0.6s ease both;
+    }
+
+    @-webkit-keyframes moveCircle {
+        0% { -webkit-transform: translateY(-80%);-webkit-opacity:0.1;}
+        5% { -webkit-transform: translateY(-80%);-webkit-opacity:0.3;}
+        35% { -webkit-transform: translateY(10%);-webkit-opacity:1;}
+        60% { -webkit-transform: translateY(-13%);}
+        65% { -webkit-transform: translateY(-13%);}
+        100% { -webkit-transform: translateY(0%);}
+    }
+    @keyframes moveCircle {
+        0% { -webkit-transform: translateY(-80%);-webkit-opacity:0.1;
+            transform: translateY(-80%);opacity:0.1;}
+        5% { -webkit-transform: translateY(-80%);-webkit-opacity:0.3;
+            transform: translateY(-80%);opacity:0.3;}
+        35% { -webkit-transform: translateY(10%);-webkit-opacity:1;
+            transform: translateY(10%);opacity:1;}
+        60% { -webkit-transform: translateY(-13%);transform: translateY(-13%);}
+        65% { -webkit-transform: translateY(-13%);transform: translateY(-13%);}
+        100% { -webkit-transform: translateY(0%);transform: translateY(0%);}
+    }
+    .moveCircle {
+        -webkit-animation: moveCircle ease-in-out 1.2s both;
+        animation: moveCircle ease-in-out 1.2s both;
+    }

@@ -1,0 +1,64 @@
+<% include header %>
+<link rel="stylesheet" href="/css/activety.css"/>
+<div class="content">
+    <div class="successimg">
+        <div class="imgbox1">
+            <img src="/images/mobile/activity/1.png" alt="" class="img1"/>
+        </div>
+        <div class="imgbox2 text-yellow">
+           <!-- <img src="/images/mobile/activity/2.png" alt="" class="img2" />-->
+            <h4>恭喜您报名成功</h4>
+            <h4>请于
+                <% if(resss != null){%>
+                    <%= resss.Startime %>
+                <% }else{ %>
+                    2015 年 8月3日 10:00
+                <%}%>
+            </h4>
+            <h4>准时到场参会，领取红酒</h4>
+        </div>
+        <div class="btnBox">
+              <a class="btn btn-block btn-yellow" onclick="document.getElementById('mcover').style.display='block';"><span class="glyphicon glyphicon-hand-down"></span> 立刻分享到朋友圈</a>
+        </div>
+        <div class="imgbox3">
+            <img src="/images/mobile/activity/bar.png" alt="" class="img2"/>
+        </div>
+    </div>
+    <% if(postData){ %>
+    <div class="successList container bgRed">
+        <ul class="list-group">
+            <% var ai=postData.length %>
+            <% postData.forEach(function(item, i){ %>
+            <li class="list-group-item noBorder noMargin noRadius bottomLine bgRed row">
+                <div class="col-xs-2 noPadding">
+                    <%= ai-- %>
+                </div>
+                <div class="col-xs-10 noPadding">
+                    <div class="media bgRed">
+                        <div class="media-left">
+                            <a href="#">
+                                <% if(item.headImgUrl){ %>
+                                <img class="media-object img-circle" src="<%= item.headImgUrl %>" width="50" height="50" alt="">
+                                <%}else{%>
+                                <img class="media-object img-circle" src="/images/mobile/activity/default.jpg" width="50" height="50" alt="">
+                                <% } %>
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <p><% var d = new Date(item.meta.createAt) %>
+                                <%= d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate()+"  "+ d.toLocaleTimeString()  %></p>
+                            <p><%= item.name%> <% var str = item.tel %><%= str.substr(0,3)+"****"+str.substr(7);%> </p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <%})%>
+        </ul>
+    </div>
+    <% } %>
+    <div id="mcover" onclick="document.getElementById('mcover').style.display='';" style="display: none;">
+        <img src="/images/mobile/activity/guide.png">
+    </div>
+</div>
+<%- include resource %>
+<% include footer %>
