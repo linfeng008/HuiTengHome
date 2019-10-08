@@ -4,7 +4,7 @@ JavaScript基本数据类型有5种：字符串、数字、布尔、null、undef
 如果你要判断的是基本数据类型或JavaScript内置对象，使用toString； 如果要判断的时自定义类型，请使用instanceof。
 不同的编程语言都有自己的方式来提供类型信息，例如C#的反射、C++的Traits， JavaScript提供类型信息的方式更加灵活，因而也容易产生很多误用。 下面来分析常见类型检查手段的区别：typeof, instanceof, constructor, toString。
 如果你在寻找类型转换的解决方案，而非类型检查，请移步JavaScript类型转换。
-```typeof
+```javascript
 typeof 操作符返回的是类型字符串，它的返回值有6种取值：
 typeof 3 // "number"
 typeof "abc" // "string"
@@ -17,10 +17,14 @@ typeof function(){} // "function"
 
 
 所有对象的typeof都是"object"，不能用于检测用户自定义类型。 比如Date, RegExp, Array, DOM Element的类型都是"object"：
+```javascript
 typeof []   // "object"
 
 typeof还有一个知名的bug：
 typeof null     // "object"
+
+```
+
 
 null是基本数据类型，它的类型显然是Null。其实这也反映了null的语义， 它是一个空指针表示对象为空，而undefined才表示什么都没有。 总之，typeof只能用于基本数据类型检测，对于null还有Bug。
 instanceof
