@@ -20,6 +20,7 @@ add.call(sub, 3, 1);
  这个例子中的意思就是用 add 来替换 sub，add.call(sub,3,1) == add(3,1) ，所以运行结果为：alert(4); // 注意：js 中的函数其实是对象，函数名是对 Function 对象的引用。
  
 b、
+```
 function Animal() {
 	this.name = "Animal";
 	this.showName = function() {
@@ -33,6 +34,9 @@ function Cat() {
 
 var animal = new Animal();
 var cat = new Cat();
+
+```
+
 
 //通过call或apply方法，将原本属于Animal对象的showName()方法交给对象cat来使用了。    
 //输入结果为"Cat"    
