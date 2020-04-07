@@ -4,6 +4,7 @@ call方法:  语法：call([thisObj[,arg1[, arg2[,   [,.argN]]]]])  定义�
 2、常用实例
 a、
 ```javascript
+
 function add(a, b) {
     alert(a + b);
 }
@@ -12,7 +13,6 @@ function sub(a, b) {
     alert(a - b);
 }
 add.call(sub, 3, 1);
-
 
 ```
 
@@ -49,6 +49,7 @@ animal.showName.call(cat, ",");
  
 c、实现继承 
 ```javascript
+
 function Animal(name) {
 	this.name = name;
 	this.showName = function() {
@@ -70,6 +71,7 @@ cat.showName();
  
 d、多重继承
 ```javascript
+
 function Class10() {
 	this.showSub = function(a, b) {
 		alert(a - b);
