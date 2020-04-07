@@ -47,6 +47,7 @@ animal.showName.call(cat, ",");
  call 的意思是把 animal 的方法放到cat上执行，原来cat是没有showName() 方法，现在是把animal 的showName()方法放到 cat上来执行，所以this.name 应该是 Cat
  
 c、实现继承 
+```javascript
 function Animal(name) {
 	this.name = name;
 	this.showName = function() {
@@ -61,9 +62,13 @@ function Cat(name) {
 var cat = new Cat("Black Cat");
 cat.showName();
 
+```
+
+
  Animal.call(this) 的意思就是使用 Animal对象代替this对象，那么 Cat中不就有Animal的所有属性和方法了吗，Cat对象就能够直接调用Animal的方法以及属性了.
  
 d、多重继承
+```javascript
 function Class10() {
 	this.showSub = function(a, b) {
 		alert(a - b);
@@ -80,6 +85,9 @@ function Class2() {
 	Class10.call(this);
 	Class11.call(this);
 }
+
+```
+
 
  很简单，使用两个 call 就实现多重继承了 当然，js的继承还有其他方法，例如使用原型链，这个不属于本文的范畴，只是在此说明call 的用法。说了call ，当然还有 apply，这两个方法基本上是一个意思，区别在于 call 的第二个参数可以是任意类型，而apply的第二个参数必须是数组，也可以是arguments 还有 callee，caller..
  
