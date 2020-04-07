@@ -91,6 +91,7 @@ function Class2() {
 
  很简单，使用两个 call 就实现多重继承了 当然，js的继承还有其他方法，例如使用原型链，这个不属于本文的范畴，只是在此说明call 的用法。说了call ，当然还有 apply，这两个方法基本上是一个意思，区别在于 call 的第二个参数可以是任意类型，而apply的第二个参数必须是数组，也可以是arguments 还有 callee，caller..
  
-例子来源：http://xiaofeizm55333.iteye.com/blog/80913
-http://www.iteye.com/topic/599108   及回复..
+例子来源：
+http://xiaofeizm55333.iteye.com/blog/80913
+http://www.iteye.com/topic/599108
 
